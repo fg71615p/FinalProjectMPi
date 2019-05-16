@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Tips Report</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale= 1.0">
+<link rel="stylesheet" href="TipsStyle.css"> 
+</head>
+
+<body>
+<header>My Tips Report</header>
+
+<form id=form method="post"> <!-- creating the form-->
+    <p>
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date">
+    </p>
+    
+	<p>
+		<label for="cash">Cash: </label>
+		<input type="number" step="any" min="0" name="cash" id="cash">
+    </p>
+	
+	<p>
+        <label for="credit">Credit Cards:</label>
+        <input type="number" step="any" min="0" name="credit" id="credit"> <!-- price is a number and should be > than zero-->
+    </p>
+    <input type="submit" value="Submit" onclick="addtoDB()">
+</form>
+<p id=submitted></p>
+<script>
+function addtoDB() {
+  var xhttp; 
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+	if (xhttp.readyState == 4 && xhttp.status == 200) {
+        document.getElementById("submitted").innerHTML = "form submitted";
+    }
+  };
+   var date = document.getElementById('date').value;
+   var cash = document.getElementById('cash').value;
+   var credit = document.getElementById('credit').value;
+    //these variables names match with my column names in my db
+  
+  var queryString = "?date=" + date +  "&cash=" + cash + "&credit=" + credit; 
+   console.log(queryString);
+   xhttp.open("GET", "tipsForm.php" + queryString, true); //insert my php file
+   xhttp.send(null); 
+}
+
+</script>
+</body>
+</html>

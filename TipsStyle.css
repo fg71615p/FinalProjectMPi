@@ -1,0 +1,21 @@
+header, body { display: block;
+}
+
+
+header {font-size: 80px;
+			 color: #ffffff;
+			 
+
+}
+
+body { background-color : #336EFF;
+			margin: 10px 10px 10px 10px;
+			
+			
+}
+
+#form {font-family: Verdana, Arial, sans-serif;
+			font-size: 30px;
+
+}
+
