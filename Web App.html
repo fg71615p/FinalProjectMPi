@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body onload="init()">
+<script>
+
+    var num_sets = 0;
+
+    function init() {
+        document.getElementById("num_sets").innerHTML = num_sets;
+        document.getElementById("activity_log").innerHTML = document.cookie;
+    }
+    
+    function plus() {
+        num_sets++;
+        document.getElementById("num_sets").innerHTML = num_sets;
+    }
+    
+    function minus() {
+        num_sets--;
+        document.getElementById("num_sets").innerHTML = num_sets;
+    }
+    
+    function submit() {
+        console.log("Here");
+        var exer = "";
+        if(document.getElementById("chest").value != "None") {
+            exer =  (document.getElementById("chest").value);
+        } else if(document.getElementById("back").value != "None") {
+            exer = (document.getElementById("back").value);
+        } else if(document.getElementById("arms").value != "None") {
+            exer = (document.getElementById("arms").value);
+        } else {
+            //Do nothing
+        }
+        document.cookie+="Did " + num_sets + " "+ exer + ".";
+
+        document.getElementById("activity_log").innerHTML = document.cookie;
+    }
+    
+</script>
+<style>
+    
+</style>
+
+<button type="button" onclick="plus()">Increase</button>
+
+<!-- Chest Workouts -->
+<select selected="None" id="chest">
+    <option value="None">None</option>
+    <option value="Chest Press">Chest Press</option>
+    <option value="Decline">Decline</option>
+    <option value="Bench Press">Bench Press</option>
+</select>
+
+<!-- Back Workouts -->
+<select selected="None" id="back">
+    <option value="None">None</option>
+    <option value="Deadlift">Deadlift</option>
+    <option value="Pullups">Pullups</option>
+    <option value="Supine Row">Supine Row</option>
+</select>
+
+<!-- Arm Workouts -->
+<select selected="None" id="arms">
+    <option value="None">None</option>
+    <option value="Curls">Curls</option>
+    <option value="Rope Pulldowns">Rope Pulldowns</option>
+    <option value="Barbel Curls">Barbel Curl</option>
+</select>
+
+<button type="button" onclick="minus()">Decrease</button>
+
+<button type="button" onclick="submit()">Enter</button>
+
+<p id="num_sets"></p>
+
+<textarea id="activity_log">
+    
+    
+</textarea>
+
+
+</body>
+</html>
